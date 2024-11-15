@@ -5,9 +5,9 @@
 
 
 <hibernate-mapping>
-	<class name="hibernate.entity.Employee">
+	<class name="hibernate.entity.Employee" table="emp11">
 		<id name="id" />
-		<property name="name" />
+		<property name="name" column="emp_name"/>
 		<property name="gender" />
 		<property name="salary" />
 	</class>

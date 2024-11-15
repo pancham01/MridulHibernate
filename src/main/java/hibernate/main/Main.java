@@ -10,11 +10,13 @@ import hibernate.entity.Employee;
 public class Main {
 
 	public static void main(String[] args) {
-		Employee akash = new Employee(1, "Akash Kumar", "Male", 57890);
+		Employee akash = new Employee(4, "Priya", "Female", 57890);
 
-		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-		SessionFactory sf = cfg.buildSessionFactory();
-		Session session = sf.openSession();
+//		Configuration cfg = new Configuration().configure("hibernate.cfgg.xml");
+//		SessionFactory sf = cfg.buildSessionFactory();
+//		Session session = sf.openSession();
+
+		Session session = new Configuration().configure("hibernate.cfgg.xml").buildSessionFactory().openSession();
 //		Transaction tx = session.beginTransaction();
 		session.persist(akash);
 		session.beginTransaction().commit();
