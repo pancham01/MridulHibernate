@@ -3,6 +3,7 @@ package hibernate.config;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -20,10 +21,11 @@ public class HibernateConfiguration {
 		ps.put(Environment.SHOW_SQL, "true");
 		ps.put(Environment.FORMAT_SQL, "true");
 
-		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(ps).build();
-		MetadataSources meta = new MetadataSources(ssr);
-		meta.addAnnotatedClassName("hibernate.entity.Employee");
-//		SessionFactory sf = meta.buildMetadata().buildSessionFactory();
-		return meta.buildMetadata().buildSessionFactory();
+//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(ps).build();
+//		MetadataSources meta = new MetadataSources(ssr);
+//		MetadataSources meta = new MetadataSources(new StandardServiceRegistryBuilder().applySettings(ps).build()).addAnnotatedClassName("hibernate.entity.Employee");
+//		meta.addAnnotatedClassName("hibernate.entity.Employee");
+//		return meta.buildMetadata().buildSessionFactory();
+		return new MetadataSources(new StandardServiceRegistryBuilder().applySettings(ps).build()).addAnnotatedClassName("hibernate.entity.Employee").buildMetadata().buildSessionFactory();
 	}
 }
