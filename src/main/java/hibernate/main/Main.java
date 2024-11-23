@@ -14,24 +14,15 @@ import hibernate.entity.Employee;
 public class Main {
 
 	public static void main(String[] args) {
-		Employee akash = new Employee( "Riya", "Female", 57890);
+		Employee em = new Employee( "Riya", "Female", 57890);
 
-//		Configuration cfg = new Configuration().configure("hibernate.cfgg.xml");
-//		SessionFactory sf = cfg.buildSessionFactory();
-//		Session session = sf.openSession();
-
-//		Session session = new Configuration().configure("hibernate.cfgg.xml").buildSessionFactory().openSession();
-//		Transaction tx = session.beginTransaction();
-		
-		
-		
 //		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfgg.xml").build();
 //		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
 //		SessionFactory sf = meta.buildSessionFactory();
 		SessionFactory sf = new MetadataSources( new StandardServiceRegistryBuilder().configure("hibernate.cfgg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
 		
 		Session session = sf.openSession();
-		session.save(akash);
+		session.save(em);
 		session.beginTransaction().commit();
 		sf.close();
 		System.out.println("Main.main()");
